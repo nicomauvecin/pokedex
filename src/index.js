@@ -5,7 +5,6 @@ const $fotosPokemon = document.querySelectorAll('.foto-pokemon');
 const $cargando = document.querySelector('.cargando');
 const $botonSiguiente = document.querySelector('#boton-siguiente');
 const $botonAnterior = document.querySelector('#boton-anterior');
-let imagen;
 let paginaActual = 0;
 let contadorNombres = paginaActual * 20;
 
