@@ -94,13 +94,17 @@ $contenedorPokemon.onclick = function(e){
             $pesoPokemonSeleccionado.innerText = `Peso: ${(respuestaJSON.weight*0.1).toFixed(2)} kg.`
             $alturaPokemonSeleccionado.innerText = `Altura: ${(respuestaJSON.height*0.1).toFixed(2)} m.`
             
-            if (respuestaJSON.types.length = 1){
+            if (respuestaJSON.types.length === 1){
                 $tiposPokemonSeleccionado.innerText = `Tipo: ${respuestaJSON.types[0].type.name}`
             } else {
                 $tiposPokemonSeleccionado.innerText = `Tipos: ${respuestaJSON.types[0].type.name} y ${respuestaJSON.types[1].type.name}`
             }
 
-            $habilidadPokemonSeleccionado.innerText = `Habilidades: ${respuestaJSON.abilities[0].ability.name} y ${respuestaJSON.abilities[1].ability.name}`
+            if (respuestaJSON.abilities.length === 1){
+                $habilidadPokemonSeleccionado.innerText = `Habilidades: ${respuestaJSON.abilities[0].ability.name}`
+            } else {
+                $habilidadPokemonSeleccionado.innerText = `Habilidades: ${respuestaJSON.abilities[0].ability.name} y ${respuestaJSON.abilities[1].ability.name}`
+            }
         });
 
        }
