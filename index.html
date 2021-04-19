@@ -12,11 +12,8 @@
         <header>
             <nav class="navbar navbar-light bg-danger">
                 <div class="container-fluid">
-                <a class="navbar-brand"><h1>Pokedex</h1></a>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                    <button class="btn btn-light" type="submit" id='buscador'>Buscar</button>
-                </form>
+                <a class="navbar-brand w-100 centrar"><h1>Pokedex</h1></a>
+                <p></p>
                 </div>
             </nav>
         </header>
@@ -117,6 +114,8 @@
             <button type="button" class="btn btn-danger ocultar" id='boton-anterior'>Anterior</button>
             <button type="button" class="btn btn-danger" id='boton-siguiente'>Siguiente</button>
         </div>
+        <div class="modal fade" id="info-pokemon" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="w-100 centrar" id="titulo-nombre-pokemon">Nombre del Pokemon</h5>
