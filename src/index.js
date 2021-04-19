@@ -1,4 +1,5 @@
 const API_URL = 'https://pokeapi.co/api/v2/';
+const $contenedorPokemon = document.querySelector('.contenedor-pokemon');
 const $nombresPokemon = document.querySelectorAll('.nombre-pokemon');
 const $fotosPokemon = document.querySelectorAll('.foto-pokemon');
 const $cargando = document.querySelector('.cargando');
@@ -51,16 +52,14 @@ $botonSiguiente.onclick = function(){
 
 $botonAnterior.onclick = function(){
     $cargando.classList.remove('ocultar');
-    if (paginaActual < 1){
-       $botonAnterior.classList.remove('ocultar');
-       
-    }
-    paginaActual--;
-    contadorNombres = paginaActual * 20;
-    cargarNombres(contadorNombres);
-    cargarImagenes(paginaActual);
-    return;
-    
+        paginaActual--;
+        contadorNombres = paginaActual * 20;
+        cargarNombres(contadorNombres);
+        cargarImagenes(paginaActual);
+        if (paginaActual === 0){
+            $botonAnterior.classList.add('ocultar');
+        }
+        return;      
 };
 
 cargarInicio();
