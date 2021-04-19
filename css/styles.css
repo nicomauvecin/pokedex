@@ -1,0 +1,29 @@
+.ocultar {
+    display: none;
+}
+
+body {
+    background-color: black;
+}
+
+.botones {
+    padding: 10px;
+    text-align: center;
+}
+
+.cargando {
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.pokemon-container {
+    color: black;
+    margin: 15px;
+    height: 150px;
+    align-items: center;
+}
+
+.centrar {
+    text-align: center;
+}
