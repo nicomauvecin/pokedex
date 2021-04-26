@@ -17,11 +17,13 @@ body {
     padding: 10px;
 }
 
-.pokemon-container {
+.contenedor-pokemon {
     color: black;
     margin: 15px;
-    height: 150px;
+    height: auto;
     align-items: center;
+    padding: 30px;
+    border-radius: 10px;
 }
 
 .centrar {
