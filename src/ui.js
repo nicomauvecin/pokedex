@@ -8,7 +8,17 @@ const $contenedorPokemon = $contenedorPokemones.querySelectorAll('.contenedor-po
 const $botonSiguiente = document.querySelector('#boton-siguiente');
 const $botonAnterior = document.querySelector('#boton-anterior');
 
+const $tituloModal = document.querySelector('#titulo-nombre-pokemon');
+const $contenidoModal = document.querySelector('.modal-body');
+
+const $fotoPokemonSeleccionado = $contenidoModal.querySelector('img');
+const $pesoPokemonSeleccionado = $contenidoModal.querySelector('#peso-pokemon-seleccionado');
+const $alturaPokemonSeleccionado = $contenidoModal.querySelector('#altura-pokemon-seleccionado');
+const $tiposPokemonSeleccionado = $contenidoModal.querySelector('#tipo-pokemon-seleccionado');
+const $habilidadPokemonSeleccionado = $contenidoModal.querySelector('#habilidad1-pokemon-seleccionado');
+
 export async function mostrarNombres(paginaActual, callbackAPI){
+
     const respuestaAPI = await callbackAPI(paginaActual);
     
     $contenedorPokemon.forEach((element, index) => {
@@ -17,7 +27,8 @@ export async function mostrarNombres(paginaActual, callbackAPI){
     });
 };
 
-export function manejarClick(callbackUI){
+export function manejarClick(callbackCargando, callbackUI){
+    callbackCargando();
     $contenedorPokemones.onclick = function(e){
         let click = e.target;
         if (click.className === 'row'){
@@ -32,15 +43,9 @@ export function manejarClick(callbackUI){
 };
 
 export async function mostrarDatos(nombre, callbackAPI){
+    mostrarCartelCargandoDatos();
     const respuestaAPI = await callbackAPI(nombre)
-    const $tituloModal = document.querySelector('#titulo-nombre-pokemon');
-    const $contenidoModal = document.querySelector('.modal-body');
 
-    const $fotoPokemonSeleccionado = $contenidoModal.querySelector('img');
-    const $pesoPokemonSeleccionado = $contenidoModal.querySelector('#peso-pokemon-seleccionado');
-    const $alturaPokemonSeleccionado = $contenidoModal.querySelector('#altura-pokemon-seleccionado');
-    const $tiposPokemonSeleccionado = $contenidoModal.querySelector('#tipo-pokemon-seleccionado');
-    const $habilidadPokemonSeleccionado = $contenidoModal.querySelector('#habilidad1-pokemon-seleccionado');
 
     $tituloModal.innerText = nombre;
     $fotoPokemonSeleccionado.setAttribute('src', await respuestaAPI.sprites.front_default);
@@ -60,8 +65,9 @@ export async function mostrarDatos(nombre, callbackAPI){
     }
 };
 
-export function manejarBotones(paginaActual, callbackUI){
+export function manejarBotones(paginaActual, callbackCargando, callbackUI){
     $botonAnterior.onclick = function(){
+        callbackCargando();
         paginaActual--;
         if (paginaActual === 0){
            $botonAnterior.classList.add('ocultar');
@@ -70,8 +76,24 @@ export function manejarBotones(paginaActual, callbackUI){
     };
 
     $botonSiguiente.onclick = function(){
+        callbackCargando();
         paginaActual++;
         $botonAnterior.classList.remove('ocultar');
         callbackUI(paginaActual, obtenerNombres);
         };
+};
+
+export function mostrarCartelCargando(){
+    $contenedorPokemon.forEach((element,index) => {
+        element.innerText = 'Cargando...';
+    });
+};
+
+export function mostrarCartelCargandoDatos(){
+   $tituloModal.innerText = 'Cargando...';
+   $fotoPokemonSeleccionado.setAttribute('src', '')
+   $pesoPokemonSeleccionado.innerText = 'Cargando...';
+   $alturaPokemonSeleccionado.innerText = 'Cargando...';
+   $tiposPokemonSeleccionado.innerText = 'Cargando...';
+   $habilidadPokemonSeleccionado.innerText = 'Cargando...';
 };

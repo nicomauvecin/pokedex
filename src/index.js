@@ -7,16 +7,19 @@ import {
     mostrarNombres,
     manejarClick,
     mostrarDatos,
-    manejarBotones
+    manejarBotones,
+    mostrarCartelCargando,
+    mostrarCartelCargandoDatos
 } from './ui.js';
 
 let paginaActual;
 
 async function cargarInicio(){
+    mostrarCartelCargando();
     paginaActual = 0;
     await mostrarNombres(paginaActual, obtenerNombres);
-    manejarClick(mostrarDatos)
-    manejarBotones(paginaActual, mostrarNombres);
+    manejarClick(mostrarCartelCargandoDatos, mostrarDatos)
+    manejarBotones(paginaActual, mostrarCartelCargando, mostrarNombres);
 };
 
 cargarInicio();
