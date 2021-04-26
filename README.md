@@ -2,4 +2,4 @@
  
 Tarea realizada para el curso r/argentina-programa
 
-Demo: https://nicomauvecin-pokedex.netlify.app/
+Demo: https://nicomauvecin.github.io/pokedex/
