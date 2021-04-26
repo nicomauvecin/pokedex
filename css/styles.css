@@ -3,7 +3,9 @@
 }
 
 body {
-    background-color: black;
+    background-image: url("img/fondo.png");
+    background-size: auto;
+    background-repeat: no-repeat;
 }
 
 .botones {
@@ -24,8 +26,13 @@ body {
     align-items: center;
     padding: 30px;
     border-radius: 10px;
+    box-shadow: 3px 3px black;
 }
 
 .centrar {
     text-align: center;
+}
+
+#logo-pokemon {
+    height: 70px;
 }
