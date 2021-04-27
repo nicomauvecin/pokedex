@@ -1,8 +1,3 @@
-import {
-    obtenerNombres,
-    obtenerDatos
-} from './api.js';
-
 const $contenedorPokemones = document.querySelector('.contenedor-pokemones');
 const $contenedorPokemon = $contenedorPokemones.querySelectorAll('.contenedor-pokemon')
 const $botonSiguiente = document.querySelector('#boton-siguiente');
@@ -27,7 +22,7 @@ export async function mostrarNombres(paginaActual, callbackAPI){
     });
 };
 
-export function manejarClick(callbackCargando, callbackUI){
+export function manejarClick(callbackCargando, callbackAPI, callbackUI){
     callbackCargando();
     $contenedorPokemones.onclick = function(e){
         let click = e.target;
@@ -38,14 +33,13 @@ export function manejarClick(callbackCargando, callbackUI){
         click.setAttribute('data-target', '#info-pokemon');
         click.setAttribute('data-toggle', 'modal');
 
-        callbackUI(pokemonSeleccionado, obtenerDatos);
+        callbackUI(pokemonSeleccionado, callbackAPI);
     };
 };
 
 export async function mostrarDatos(nombre, callbackAPI){
     mostrarCartelCargandoDatos();
     const respuestaAPI = await callbackAPI(nombre)
-
 
     $tituloModal.innerText = nombre;
     $fotoPokemonSeleccionado.setAttribute('src', await respuestaAPI.sprites.front_default);
@@ -65,21 +59,21 @@ export async function mostrarDatos(nombre, callbackAPI){
     }
 };
 
-export function manejarBotones(paginaActual, callbackCargando, callbackUI){
+export function manejarBotones(paginaActual, callbackCargando, callbackAPI, callbackUI){
     $botonAnterior.onclick = function(){
         callbackCargando();
         paginaActual--;
         if (paginaActual === 0){
            $botonAnterior.classList.add('ocultar');
         }
-        callbackUI(paginaActual, obtenerNombres);
+        callbackUI(paginaActual, callbackAPI);
     };
 
     $botonSiguiente.onclick = function(){
         callbackCargando();
         paginaActual++;
         $botonAnterior.classList.remove('ocultar');
-        callbackUI(paginaActual, obtenerNombres);
+        callbackUI(paginaActual, callbackAPI);
         };
 };
 

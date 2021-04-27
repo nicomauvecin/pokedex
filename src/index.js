@@ -18,8 +18,8 @@ async function cargarInicio(){
     mostrarCartelCargando();
     paginaActual = 0;
     await mostrarNombres(paginaActual, obtenerNombres);
-    manejarClick(mostrarCartelCargandoDatos, mostrarDatos)
-    manejarBotones(paginaActual, mostrarCartelCargando, mostrarNombres);
+    manejarClick(mostrarCartelCargandoDatos, obtenerDatos, mostrarDatos);
+    manejarBotones(paginaActual, mostrarCartelCargando, obtenerNombres, mostrarNombres);
 };
 
 cargarInicio();
